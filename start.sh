@@ -26,6 +26,11 @@ if [ -n "$PASV_ADDRESS" ]; then
   echo "pasv_address=$PASV_ADDRESS" >> $CONF_FILE
  fi
 
+if [ -n "$PASV_ADDR_RESOLVE" ]; then
+  echo "Activating pasv_addr_resolve"
+  echo "pasv_addr_resolve=YES" >> $CONF_FILE
+fi
+
 # If TLS flag is set and no certificate exists, generate it
 if [ ! -e /etc/vsftpd/private/vsftpd.pem ] && [[ "$CONF_FILE" == *"ftps"* ]]
 then
